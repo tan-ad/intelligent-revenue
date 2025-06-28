@@ -1,7 +1,6 @@
 # ruff: noqa: ERA001, E501
 """Base settings to build other settings files upon."""
 
-
 from pathlib import Path
 
 import environ
@@ -284,7 +283,9 @@ ACCOUNT_FORMS = {"signup": "revenue_intelligence.users.forms.UserSignupForm"}
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
 SOCIALACCOUNT_ADAPTER = "revenue_intelligence.users.adapters.SocialAccountAdapter"
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-SOCIALACCOUNT_FORMS = {"signup": "revenue_intelligence.users.forms.UserSocialSignupForm"}
+SOCIALACCOUNT_FORMS = {
+    "signup": "revenue_intelligence.users.forms.UserSocialSignupForm",
+}
 
 # django-rest-framework
 # -------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 volumes:
   revenue_intelligence_local_postgres_data: {}
   revenue_intelligence_local_postgres_data_backups: {}
-  
+
 
 services:
   django:
