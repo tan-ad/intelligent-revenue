@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=revenue_intelligence
+POSTGRES_USER=hrVgikMbaHsspxNplUYopykjHdgyOvnN
+POSTGRES_PASSWORD=SfPWe9pHxKJjz3Q5prpQcXw970qOx9fkaADOPIOSy8Lgmp0s8oVxXlksYP4zAqbF
