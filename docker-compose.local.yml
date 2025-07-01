@@ -12,6 +12,7 @@ services:
     container_name: revenue_intelligence_local_django
     depends_on:
       - postgres
+      - node
     volumes:
       - .:/app:z
     env_file:
@@ -32,3 +33,12 @@ services:
       - revenue_intelligence_local_postgres_data_backups:/backups
     env_file:
       - ./.envs/.local/.postgres
+
+  node:
+    image: node:20-slim
+    stdin_open: true
+    tty: true
+    command: npm run build:watch
+    volumes:
+      - .:/app
+    working_dir: /app

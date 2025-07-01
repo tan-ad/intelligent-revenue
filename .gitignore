@@ -130,6 +130,9 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
+# tailwindcss
+output.css
+
 
 ### Linux template
 *~

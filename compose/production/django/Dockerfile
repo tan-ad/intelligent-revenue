@@ -1,5 +1,12 @@
-
+# node and build tailwindcss
+FROM docker.io/node:20-slim AS frontend-builder
+WORKDIR /app
+COPY ./package.json ./package-lock.json* ./
+RUN npm install --frozen-lockfile
+COPY . .
+RUN npm run build:minify
 # define an alias for the specific python version used in this file.
+
 FROM docker.io/python:3.12.11-slim-bookworm AS python
 
 # Python build stage
@@ -70,8 +77,12 @@ RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
 
 
+
 # copy application code to WORKDIR
 COPY --chown=django:django . ${APP_HOME}
+
+# copy tailwindcss
+COPY --chown=django:django --from=frontend-builder /app/revenue_intelligence/static/css/output.css /app/revenue_intelligence/static/css/output.css
 
 # make django owner of the WORKDIR directory as well.
 RUN chown -R django:django ${APP_HOME}
