@@ -2,3 +2,5 @@
 # ------------------------------------------------------------------------------
 USE_DOCKER=yes
 IPYTHONDIR=/app/.ipython
+
+DATABASE_URL=postgres://hrVgikMbaHsspxNplUYopykjHdgyOvnN:SfPWe9pHxKJjz3Q5prpQcXw970qOx9fkaADOPIOSy8Lgmp0s8oVxXlksYP4zAqbF@postgres:5432/revenue_intelligence

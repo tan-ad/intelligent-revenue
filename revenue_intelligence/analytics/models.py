@@ -6,7 +6,10 @@ from django.utils.translation import gettext_lazy as _
 
 class Account(models.Model):
     id = models.CharField(
-        _("Account ID"), primary_key=True, max_length=255, editable=False
+        _("Account ID"),
+        primary_key=True,
+        max_length=255,
+        editable=False,
     )
     name = models.CharField(_("Account Name"), max_length=255)
 
@@ -21,7 +24,9 @@ class Contact(models.Model):
     # Email is the most reliable unique identifier.
     email = models.EmailField(_("Email Address"), primary_key=True, max_length=255)
     account = models.ForeignKey(
-        Account, on_delete=models.CASCADE, related_name="contacts"
+        Account,
+        on_delete=models.CASCADE,
+        related_name="contacts",
     )
     first_name = models.CharField(_("First Name"), max_length=255)
     last_name = models.CharField(_("Last Name"), max_length=255)
@@ -50,7 +55,9 @@ class Opportunity(models.Model):
     # The CSV doesn't have a unique ID, so we use UUID.
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     account = models.ForeignKey(
-        Account, on_delete=models.CASCADE, related_name="opportunities"
+        Account,
+        on_delete=models.CASCADE,
+        related_name="opportunities",
     )
     primary_contact = models.ForeignKey(
         Contact,
@@ -62,7 +69,10 @@ class Opportunity(models.Model):
 
     name = models.CharField(_("Opportunity Name"), max_length=255)
     stage = models.CharField(
-        _("Stage"), max_length=50, choices=Stage.choices, default=Stage.PROSPECTING
+        _("Stage"),
+        max_length=50,
+        choices=Stage.choices,
+        default=Stage.PROSPECTING,
     )
     amount = models.DecimalField(_("Amount"), max_digits=12, decimal_places=2)
     probability = models.DecimalField(
@@ -73,12 +83,18 @@ class Opportunity(models.Model):
     )
     close_date = models.DateField(_("Close Date"), null=True, blank=True)
     created_date = models.DateField(_("Created Date"), null=True, blank=True)
-    next_step = models.CharField(_("Next Step"), max_length=255, blank=True, null=True)
+    next_step = models.CharField(_("Next Step"), max_length=255, blank=True, default="")
     lead_source = models.CharField(
-        _("Lead Source"), max_length=100, blank=True, null=True
+        _("Lead Source"),
+        max_length=100,
+        blank=True,
+        default="",
     )
     opportunity_type = models.CharField(
-        _("Type"), max_length=100, blank=True, null=True
+        _("Type"),
+        max_length=100,
+        blank=True,
+        default="",
     )
 
     class Meta:

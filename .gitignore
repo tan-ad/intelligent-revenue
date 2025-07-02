@@ -278,3 +278,4 @@ revenue_intelligence/media/
 .env
 .envs/*
 !.envs/.local/
+.production/
